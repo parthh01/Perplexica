@@ -7,8 +7,7 @@ import {
   getGroqApiKey,
   getOllamaApiEndpoint,
   getAnthropicApiKey,
-  getOpenaiApiKey,
-  updateConfig,
+  getOpenaiApiKey
 } from '../config';
 
 const router = express.Router();
@@ -58,7 +57,7 @@ router.post('/', async (req, res) => {
     },
   };
 
-  updateConfig(updatedConfig);
+  // updateConfig(updatedConfig);
 
   res.status(200).json({ message: 'Config updated' });
 });
