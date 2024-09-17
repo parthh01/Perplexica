@@ -17,6 +17,7 @@ interface Config {
   API_ENDPOINTS: {
     SEARXNG: string;
     OLLAMA: string;
+    OPENAI: string;
   };
 }
 
@@ -29,12 +30,14 @@ const loadConfig = () =>
     fs.readFileSync(path.join(__dirname, `../${configFileName}`), 'utf-8'),
   ) as any as Config;
 
-export const getPort = () => loadConfig().GENERAL.PORT;
+export const getPort = () => process.env.PORT || loadConfig().GENERAL.PORT;
 
 export const getSimilarityMeasure = () =>
-  loadConfig().GENERAL.SIMILARITY_MEASURE;
+  process.env.SIMILARITY_MEASURE || loadConfig().GENERAL.SIMILARITY_MEASURE;
 
-export const getOpenaiApiKey = () => loadConfig().API_KEYS.OPENAI;
+export const getOpenaiBaseUrl = () => process.env.OPENAI_BASE_URL || loadConfig().API_ENDPOINTS.OPENAI;
+
+export const getOpenaiApiKey = () => process.env.OPENAI_API_KEY || loadConfig().API_KEYS.OPENAI;
 
 export const getGroqApiKey = () => loadConfig().API_KEYS.GROQ;
 

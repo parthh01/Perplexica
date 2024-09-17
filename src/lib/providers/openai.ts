@@ -1,9 +1,10 @@
 import { ChatOpenAI, OpenAIEmbeddings } from '@langchain/openai';
-import { getOpenaiApiKey } from '../../config';
+import { getOpenaiApiKey,getOpenaiBaseUrl } from '../../config';
 import logger from '../../utils/logger';
 
 export const loadOpenAIChatModels = async () => {
   const openAIApiKey = getOpenaiApiKey();
+  const openaiBaseUrl = getOpenaiBaseUrl();
 
   if (!openAIApiKey) return {};
 
@@ -11,29 +12,44 @@ export const loadOpenAIChatModels = async () => {
     const chatModels = {
       'GPT-3.5 turbo': new ChatOpenAI({
         openAIApiKey,
-        modelName: 'gpt-3.5-turbo',
-        temperature: 0.7,
-      }),
+        modelName: 'akjindal53244/Llama-3.1-Storm-8B',
+        temperature: 0.7},
+        {
+          baseURL: openaiBaseUrl,
+        }
+      ),
       'GPT-4': new ChatOpenAI({
         openAIApiKey,
-        modelName: 'gpt-4',
-        temperature: 0.7,
-      }),
+        modelName: 'akjindal53244/Llama-3.1-Storm-8B',
+        temperature: 0.7},
+        {
+          baseURL: openaiBaseUrl,
+        },
+      ),
       'GPT-4 turbo': new ChatOpenAI({
         openAIApiKey,
-        modelName: 'gpt-4-turbo',
-        temperature: 0.7,
-      }),
+        modelName: 'akjindal53244/Llama-3.1-Storm-8B',
+        temperature: 0.7},
+        {
+          baseURL: openaiBaseUrl,
+        },
+      ),
       'GPT-4 omni': new ChatOpenAI({
         openAIApiKey,
-        modelName: 'gpt-4o',
-        temperature: 0.7,
-      }),
+        modelName: 'akjindal53244/Llama-3.1-Storm-8B',
+        temperature: 0.7},
+        {
+          baseURL: openaiBaseUrl,
+        },
+      ),
       'GPT-4 omni mini': new ChatOpenAI({
         openAIApiKey,
-        modelName: 'gpt-4o-mini',
-        temperature: 0.7,
-      }),
+        modelName: 'akjindal53244/Llama-3.1-Storm-8B',
+        temperature: 0.7},
+        {
+          baseURL: openaiBaseUrl,
+        },
+      ),
     };
 
     return chatModels;

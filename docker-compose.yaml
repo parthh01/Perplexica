@@ -38,7 +38,7 @@ services:
     depends_on:
       - perplexica-backend
     ports:
-      - 3000:3000
+      - 3003:3000
     networks:
       - perplexica-network
     restart: unless-stopped
